@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartLogo.unity
+    guid: 915561831f31c3c41b831c84e2bb2fe8
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 5e9832e48f7e98b46aac4c0a69ebf590
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Plugins/TypedScenes/Samples/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_04___Word_Wrapping.unity
+    guid: fb0aa414dd913744d8fb3cd056a53a17
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_24___Surface_Shader_Example.unity
+    guid: bd1041d6dc05cb24e8afaa7d25a888c6
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_07___Superscript___Subscript_Example.unity
+    guid: 5ffde059ae91bfb439608f724c5e4e56
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_18___ScrollRect___Masking___Layout.unity
+    guid: e6bf2fa8acacf9e49b348e51e29da7b1
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_21___Script_Example.unity
+    guid: 386d36675a346ba47bd0dd00e96abfe6
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_16___Linked_text_overflow_mode_example.unity
+    guid: 6393115813cce48408ff390306184daa
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_02___Multi_line_TextMesh_Pro.unity
+    guid: a2d7ae9814e97c24b95fc003ee4299f4
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_12a___Text_Interactions.unity
+    guid: c2c6071c43096204c8876d9927cd6452
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_09___Margin_Tag_Example.unity
+    guid: 0d98417807610ce44ae74f8ff00f72a1
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_19___Masking_Texture___Soft_Mask.unity
+    guid: b2f0f810ea7011648b49b7d86c28b210
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_10___Bullets___Numbered_List_Example.unity
+    guid: 8bfa3f085775b9d44a631d93fc18c59d
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_23___Animating_Vertex_Attributes.unity
+    guid: 722158da65f7fd64b9ff5399ad4d0247
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_05___Style_Tags.unity
+    guid: 515f54acc406d554cb1309b75931c9cf
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_20___Input_Field_with_Scrollbar.unity
+    guid: 8ebcb9b4d279aa0488daa7d161079705
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_17___Old_Computer_Terminal.unity
+    guid: e4d78ca14e5fcc74d8c2b76f270bce7a
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_25___Sunny_Days_Example.unity
+    guid: 80b0aaf451c455846afe00efef0578c1
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_03___Line_Justification.unity
+    guid: 59d549df004e57a428ffd7e3103340e9
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_26___Dropdown_Placeholder_Example.unity
+    guid: 9602123e2d5319542bd0858ff1464708
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_22___Basic_Scripting_Example.unity
+    guid: 9aebb94248db2464790060e7b2bd61f3
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_01___Single_Line_TextMesh_Pro.unity
+    guid: cc5aca9a192de6740a08d29c9ef184ba
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_06___Extra_Rich_Text_Examples.unity
+    guid: 37c9ea71b85cd024cb004e1753bb6f23
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_13___Soft_Hyphenation.unity
+    guid: 39e94608c54cb4445b4c4d20e64432ea
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_08___Improved_Text_Alignment.unity
+    guid: 43bde265a75ce714096e73d55328516b
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_11___The_Style_Tag.unity
+    guid: aaa14a647be4285479edbb7a4e258a51
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/Benchmark__Floating_Text_.unity
+    guid: 1fe851e556703444c9e1906f3c9e6b66
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_14___Multi_Font___Sprites.unity
+    guid: 5a0a3841844d95c46abbcea980dfc478
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_12___Link_Example.unity
+    guid: 88cdc999ac6df774197a5ec7efa86001
+  - enabled: 0
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/_15___Inline_Graphics___Sprites.unity
+    guid: 395ce4bd4ee7b2b4a81c7eac314963c4
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 307f0b9c21edeb04eb56dc4fc48e7cf7, type: 2}
