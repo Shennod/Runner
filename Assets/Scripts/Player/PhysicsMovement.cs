@@ -11,6 +11,11 @@ public class PhysicsMovement : MonoBehaviour
     [SerializeField] private AudioResources _audioResources;
     [SerializeField] private ParticleSystem _speedUpParticle;
 
+    private const string Jump = "Jump";
+    private const string SpeedUp = "SpeedUp";
+    private const float MinMoveDistance = 0.001f;
+    private const float ShellRadius = 0.01f;
+
     private float _minGroundNormalY = -1f;
     private float _jumpTime = 1f;
     private float _jumpForce = 8f;
@@ -29,14 +34,39 @@ public class PhysicsMovement : MonoBehaviour
     private PlayerInput _playerInput;
     private Dash _dash;
 
-    private const string Jump = "Jump";
-    private const string SpeedUp = "SpeedUp";
-    private const float MinMoveDistance = 0.001f;
-    private const float ShellRadius = 0.01f;
-
     public event UnityAction MoveParalax;
     public event UnityAction<bool> MovePlayer;
     public event UnityAction<bool> PlayerIsJumping;
+
+    private void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _dash = GetComponent<Dash>();
+        _playerInput = new PlayerInput();
+        _playerInput.Player.Jump.performed += ctx => JumpStarted();
+        _playerInput.Player.Jump.canceled += ctx => JumpEnd();
+    }
+
+    private void Start()
+    {
+        _contactFilter.useTriggers = false;
+        _contactFilter.SetLayerMask(_layerMask);
+        _contactFilter.useLayerMask = true;
+        TryToMove(false);
+    }
+
+    private void OnEnable()
+    {
+        timerToStart.Run += EnablePlayerInput;
+        _dash.Dashing += JumpEnd;
+    }
+
+    private void OnDisable()
+    {
+        timerToStart.Run += EnablePlayerInput;
+        _playerInput.Disable();
+        _dash.Dashing -= JumpEnd;
+    }
 
     public void TryToMove(bool state)
     {
@@ -57,36 +87,6 @@ public class PhysicsMovement : MonoBehaviour
         _speed = value;
         _speedUpParticle.Play();
         _audioResources.PlaySound(SpeedUp);
-    }
-
-    private void Awake()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _dash = GetComponent<Dash>();
-        _playerInput = new PlayerInput();
-        _playerInput.Player.Jump.performed += ctx => JumpStarted();
-        _playerInput.Player.Jump.canceled += ctx => JumpEnd();
-    }
-
-    private void OnEnable()
-    {
-        timerToStart.Run += EnablePlayerInput;
-        _dash.Dashing += JumpEnd;
-    }
-
-    private void OnDisable()
-    {
-        timerToStart.Run += EnablePlayerInput;
-        _playerInput.Disable();
-        _dash.Dashing -= JumpEnd;
-    }
-
-    private void Start()
-    {
-        _contactFilter.useTriggers = false;
-        _contactFilter.SetLayerMask(_layerMask);
-        _contactFilter.useLayerMask = true;
-        TryToMove(false);
     }
 
     private void EnablePlayerInput()

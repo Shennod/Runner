@@ -11,15 +11,6 @@ public class UpgradeScreen : MonoBehaviour
 
     private const string Button = "Button";
 
-    public void CloseUpgradeScreen()
-    {
-        Time.timeScale = 1;
-        _upgradeScreen.SetActive(false);
-        _physicsMovement.TryToMove(true);
-        _pauseButton.interactable = true;
-        _audioResources.PlaySound(Button);
-    }
-
     private void OnEnable()
     {
         _upgradeStation.ActivateUpgradeStation += OpenUpgradeScreen;
@@ -30,6 +21,15 @@ public class UpgradeScreen : MonoBehaviour
     {
         _upgradeStation.ActivateUpgradeStation -= OpenUpgradeScreen;
         _upgradeStation.SellUpgrade -= CloseUpgradeScreen;
+    }
+
+    public void CloseUpgradeScreen()
+    {
+        Time.timeScale = 1;
+        _upgradeScreen.SetActive(false);
+        _physicsMovement.TryToMove(true);
+        _pauseButton.interactable = true;
+        _audioResources.PlaySound(Button);
     }
 
     private void OpenUpgradeScreen()

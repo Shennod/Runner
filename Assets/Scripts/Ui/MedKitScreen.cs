@@ -14,16 +14,8 @@ public class MedKitScreen : MonoBehaviour
 
     private const string Button = "Button";
     private const string Error = "Error";
-    private MedKitStation _medKitStation;
 
-    public void CloseMedKitScreen()
-    {
-        Time.timeScale = 1;
-        _medKitScreen.SetActive(false);
-        _physicsMovement.TryToMove(true);
-        _pauseButton.interactable = true;
-        _audioResources.PlaySound(Button);
-    }
+    private MedKitStation _medKitStation;
 
     private void OnEnable()
     {
@@ -35,6 +27,15 @@ public class MedKitScreen : MonoBehaviour
     {
         _player.ActivateMedKitStation -= OpenMedKitScreen;
         _sellButton.onClick.RemoveListener(OnSellButtonClick);
+    }
+
+    public void CloseMedKitScreen()
+    {
+        Time.timeScale = 1;
+        _medKitScreen.SetActive(false);
+        _physicsMovement.TryToMove(true);
+        _pauseButton.interactable = true;
+        _audioResources.PlaySound(Button);
     }
 
     private void OnSellButtonClick()

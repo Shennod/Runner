@@ -6,18 +6,6 @@ public class AudioResources : MonoBehaviour
 
     private const string MainTheme = "MainTheme";
 
-    public void PlaySound(string name)
-    {
-        Sound sound = GetSoundByName(name);
-
-        if (sound == null)
-        {
-            return;
-        }
-
-        sound.Source.Play();
-    }
-
     private void Awake()
     {
         foreach (Sound sound in _sounds)
@@ -33,6 +21,18 @@ public class AudioResources : MonoBehaviour
     private void Start()
     {
         PlaySound(MainTheme);
+    }
+
+    public void PlaySound(string name)
+    {
+        Sound sound = GetSoundByName(name);
+
+        if (sound == null)
+        {
+            return;
+        }
+
+        sound.Source.Play();
     }
 
     private Sound GetSoundByName(string name)

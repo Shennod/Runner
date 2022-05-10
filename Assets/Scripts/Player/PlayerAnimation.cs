@@ -7,16 +7,18 @@ using UnityEngine;
 [RequireComponent(typeof(Dash))]
 public class PlayerAnimation : MonoBehaviour
 {
-    private PhysicsMovement _physicsMovement;
-    private Dash _dash;
-    private Player _player;
-    private SpriteRenderer _spriteRenderer;
-    private Animator _animator;
     private const string Idle = "Idle";
     private const string Move = "Move";
     private const string Hurt = "Hurt";
     private const string InAir = "InAir";
     private const string Dash = "Dash";
+
+    private Animator _animator;
+
+    private PhysicsMovement _physicsMovement;
+    private Dash _dash;
+    private Player _player;
+    private SpriteRenderer _spriteRenderer;
 
     private void OnEnable()
     {

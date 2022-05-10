@@ -17,6 +17,7 @@ public class Item : MonoBehaviour
     [SerializeField] private AudioResources _audioResources;
 
     private const string Button = "Button";
+
     private Button _button;
     private Image _image;
 
@@ -26,6 +27,27 @@ public class Item : MonoBehaviour
     public int Price => _price;
     public bool IsBuyed => _isBuyed;
     public Upgrade Template => _template;
+
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+        _image = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        ChangeImageColor();
+    }
+
+    private void OnEnable()
+    {
+        _button.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(OnButtonClick);
+    }
 
     public bool CanBuy()
     {
@@ -71,26 +93,5 @@ public class Item : MonoBehaviour
         _audioResources.PlaySound(Button);
         _itemView.gameObject.SetActive(true);
         _itemView.Render(this);
-    }
-
-    private void Awake()
-    {
-        _button = GetComponent<Button>();
-        _image = GetComponent<Image>();
-    }
-
-    private void Start()
-    {
-        ChangeImageColor();
-    }
-
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnButtonClick);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
     }
 }

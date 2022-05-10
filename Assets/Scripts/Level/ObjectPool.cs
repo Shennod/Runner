@@ -8,9 +8,11 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private List<GameObject> _objectsToSpawn;
     [SerializeField] private int _amount;
     
-    protected List<GameObject> _pooledObjects = new List<GameObject>();
-    private float screenPosition;
     private const float Offset = 65f;
+
+    protected List<GameObject> _pooledObjects = new List<GameObject>();
+
+    private float screenPosition;
 
     protected void Initialize()
     {

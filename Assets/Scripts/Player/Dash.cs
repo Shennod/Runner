@@ -11,6 +11,8 @@ public class Dash : MonoBehaviour
     [SerializeField] private AudioResources _audioResources;
     [SerializeField] private ParticleSystem _dashParticle;
 
+    private const string DashSound = "Dash";
+
     private float _dashTime = 0.1f;
     private float _dashSpeed = 10f;
     private float _lastDash = -1f;
@@ -18,7 +20,6 @@ public class Dash : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _currentVelocity;
     private PlayerInput _playerInput;
-    private const string DashSound = "Dash";
 
     public event UnityAction Dashing;
 
@@ -47,6 +48,14 @@ public class Dash : MonoBehaviour
         _playerInput.Disable();
     }
 
+    private void FixedUpdate()
+    {
+        if (_isDashing)
+        {
+            _rigidbody2D.velocity += Vector2.right * (_dashSpeed + Time.deltaTime);           
+        }
+    }
+
     private void EnablePlayerInput()
     {
         _playerInput.Enable();
@@ -59,14 +68,6 @@ public class Dash : MonoBehaviour
             PrepareToDash();
             StartCoroutine(StopDashing(_dashTime));
         }      
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isDashing)
-        {
-            _rigidbody2D.velocity += Vector2.right * (_dashSpeed + Time.deltaTime);           
-        }
     }
 
     private void PrepareToDash()

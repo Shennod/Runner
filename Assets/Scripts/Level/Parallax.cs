@@ -8,6 +8,7 @@ public class Parallax : MonoBehaviour
     [SerializeField] private PhysicsMovement _player;
 
     private RawImage _image;
+
     private float _imagePositionX;
 
     private void OnEnable()

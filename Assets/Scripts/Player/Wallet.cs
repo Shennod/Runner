@@ -8,9 +8,16 @@ public class Wallet : MonoBehaviour
 
     private const string CoinSave = "CoinSave";
     private const string Collect = "Collect";
+
     private int _collectedCoins = 0;
 
     public int Coins { get; private set; }
+
+    private void Start()
+    {
+        Load();
+        ChangeCoinText();
+    }
 
     public void DecreaseMoney(int value)
     {
@@ -46,12 +53,6 @@ public class Wallet : MonoBehaviour
     public bool TryDecreaseMoney(int value)
     {
         return value <= Coins;
-    }
-
-    private void Start()
-    {
-        Load();
-        ChangeCoinText();
     }
 
     private void ChangeCoinText()

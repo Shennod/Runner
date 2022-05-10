@@ -7,10 +7,13 @@ public class AnimationUpgradeStation : MonoBehaviour
 {
     [SerializeField] private AudioResources _audioResources;
 
-    private UpgradeStation _upgradeStation;
-    private Animator _animator;
     private const string Activate = "Activate";
     private const string IsCollected = "IsCollected";
+    private const float WaitTimeSeconds = 1f;
+
+    private UpgradeStation _upgradeStation;
+
+    private Animator _animator;
 
     private void Start()
     {
@@ -33,7 +36,7 @@ public class AnimationUpgradeStation : MonoBehaviour
 
     private IEnumerator ActivateUpgradeScreen()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(WaitTimeSeconds);
         _upgradeStation.ActivateUpgradeScreen();
         _audioResources.PlaySound(Activate);
     }

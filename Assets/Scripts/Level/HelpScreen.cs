@@ -9,9 +9,10 @@ public class HelpScreen : MonoBehaviour
     [SerializeField] private Button _pauseButton;
     [SerializeField] private AudioResources _audioResources;
 
-    private bool _isFirstRun;
     private const string Button = "Button";
     private const string FirsRun = "FirsRun";
+
+    private bool _isFirstRun;
 
     public event UnityAction CountdownStart;
 

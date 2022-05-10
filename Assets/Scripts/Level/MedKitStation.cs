@@ -7,18 +7,6 @@ public class MedKitStation : MonoBehaviour
     private Wallet _wallet;
     private Player _player;
 
-    public bool TrySellMedKit()
-    {
-        if (_wallet.TryDecreaseCollectedMoney(Price))
-        {
-            _wallet.DecreaseCollectedMoney(Price);
-            _player.BuyMedKit();
-            return true;
-        }
-
-        return false;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player player))
@@ -39,5 +27,17 @@ public class MedKitStation : MonoBehaviour
         {
             _wallet = wallet;
         }
+    }
+
+    public bool TrySellMedKit()
+    {
+        if (_wallet.TryDecreaseCollectedMoney(Price))
+        {
+            _wallet.DecreaseCollectedMoney(Price);
+            _player.BuyMedKit();
+            return true;
+        }
+
+        return false;
     }
 }

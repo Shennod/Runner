@@ -10,6 +10,7 @@ public class CountdownTimerToStart : MonoBehaviour
     [SerializeField] private TMP_Text _countdownText;
 
     private const string Go = "Go!!!";
+    private const float WaitTimeSeconds = 1f;
 
     public event UnityAction Run;
 
@@ -37,14 +38,14 @@ public class CountdownTimerToStart : MonoBehaviour
         {
             _countdownText.text = _countdownTime.ToString();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(WaitTimeSeconds);
 
             _countdownTime--;
         }
 
         _countdownText.text = Go;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(WaitTimeSeconds);
 
         Run?.Invoke();
         _countdownText.gameObject.SetActive(false);

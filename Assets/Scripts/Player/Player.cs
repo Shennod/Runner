@@ -9,13 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem _electroProtectParticle;
     [SerializeField] private AudioResources _audioResources;
 
-    private int _health;
-    private int _armor;
-    private float _timeInvincible = 0.3f;
-    private bool _isInvincible = false;
-    private bool _isElectroProtected = false;
-    private Dash _dash;
-
     private const string GameOver = "GameOver";
     private const string Hit = "Hit";
     private const string Activate = "Activate";
@@ -25,6 +18,13 @@ public class Player : MonoBehaviour
     private const string FullHealth = "FullHealth";
     private const string ElectroProtect = "ElectroProtect";
 
+    private int _health;
+    private int _armor;
+    private float _timeInvincible = 0.3f;
+    private bool _isInvincible = false;
+    private bool _isElectroProtected = false;
+    private Dash _dash;
+
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> ArmorChanged;
     public event UnityAction<Upgrade> UpgradeChanged;
@@ -33,6 +33,27 @@ public class Player : MonoBehaviour
     public event UnityAction Died;
     public event UnityAction LevelChanged;
     public event UnityAction<MedKitStation> ActivateMedKitStation;
+
+    private void Awake()
+    {
+        _dash = GetComponent<Dash>();
+    }
+
+    private void Start()
+    {
+        _health = _maxHealth;
+        HealthChanged?.Invoke(_health);
+    }
+
+    private void OnEnable()
+    {
+        _dash.Dashing += ActivateInvincible;
+    }
+
+    private void OnDisable()
+    {
+        _dash.Dashing -= ActivateInvincible;
+    }
 
     public void ApplyDamage(int damage, bool isElectroTrap)
     {
@@ -108,27 +129,6 @@ public class Player : MonoBehaviour
         _isElectroProtected = true;
         _electroProtectParticle.Play();
         _audioResources.PlaySound(ElectroProtect);
-    }
-
-    private void Awake()
-    {
-        _dash = GetComponent<Dash>();
-    }
-
-    private void Start()
-    {
-        _health = _maxHealth;
-        HealthChanged?.Invoke(_health);
-    }
-
-    private void OnEnable()
-    {
-        _dash.Dashing += ActivateInvincible;
-    }
-
-    private void OnDisable()
-    {
-        _dash.Dashing -= ActivateInvincible;
     }
 
     private void ActivateInvincible()

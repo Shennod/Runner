@@ -13,28 +13,14 @@ public class UpgradeTree : MonoBehaviour
     [SerializeField] private AudioResources _audioResources;
     [SerializeField] private TMP_Text _coinText;
 
-    private Wallet _wallet;
-    private List<Upgrade> _buyedUpgrades = new List<Upgrade>();
     private const string Button = "Button";
     private const string Error = "Error";
     private const string MainSave = "MainSave";
-    private bool[] _isBuyedFlags;
+
+    private Wallet _wallet;
     private Item _selectedItem;
-
-    public List<Upgrade> GetBuyedUpgrades()
-    {
-        _buyedUpgrades.Clear();
-
-        for (int i = 0; i < _items.Count; i++)
-        {
-            if (_items[i].IsBuyed)
-            {
-                _buyedUpgrades.Add(_items[i].Template);
-            }
-        }
-
-        return _buyedUpgrades;
-    }
+    private List<Upgrade> _buyedUpgrades = new List<Upgrade>();
+    private bool[] _isBuyedFlags;
 
     private void Awake()
     {
@@ -57,11 +43,6 @@ public class UpgradeTree : MonoBehaviour
         }
     }
 
-    private void ChangeCoinText()
-    {
-        _coinText.text = _wallet.Coins.ToString();
-    }
-
     private void OnEnable()
     {
         _itemView.SellButtonClick += OnSellButtonClick;
@@ -72,6 +53,26 @@ public class UpgradeTree : MonoBehaviour
     {
         _itemView.SellButtonClick -= OnSellButtonClick;
         _itemView.SelectedItem -= ChangeSelectedItem;
+    }
+
+    public List<Upgrade> GetBuyedUpgrades()
+    {
+        _buyedUpgrades.Clear();
+
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].IsBuyed)
+            {
+                _buyedUpgrades.Add(_items[i].Template);
+            }
+        }
+
+        return _buyedUpgrades;
+    }
+
+    private void ChangeCoinText()
+    {
+        _coinText.text = _wallet.Coins.ToString();
     }
 
     private void ChangeSelectedItem(Item item)

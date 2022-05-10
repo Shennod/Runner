@@ -16,6 +16,16 @@ public class ItemView : MonoBehaviour
     public event UnityAction SellButtonClick;
     public event UnityAction<Item> SelectedItem;
 
+    private void OnEnable()
+    {
+        _buttonBuy.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnDisable()
+    {
+        _buttonBuy.onClick.RemoveListener(OnButtonClick);
+    }
+
     public void Render(Item item)
     {
         SelectedItem?.Invoke(item);
@@ -35,16 +45,6 @@ public class ItemView : MonoBehaviour
             _buttonBuy.interactable = false;
         }      
     }
-
-    private void OnEnable()
-    {
-        _buttonBuy.onClick.AddListener(OnButtonClick);
-    }
-
-    private void OnDisable()
-    {
-        _buttonBuy.onClick.RemoveListener(OnButtonClick);
-    } 
 
     private void OnButtonClick()
     {

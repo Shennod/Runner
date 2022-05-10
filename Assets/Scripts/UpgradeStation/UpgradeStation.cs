@@ -24,6 +24,16 @@ public class UpgradeStation : MonoBehaviour, ISceneLoadHandler<List<Upgrade>>
     public List<Upgrade> Upgrades => _upgrades;
     public bool MedKitIsBuyed { get; private set; } = false;
 
+    private void Start()
+    {
+        if (_upgrades.Count >= 1)
+        {
+            MedKitIsBuyed = true;
+        }
+
+        InstantiateRandomUpgrades();
+    }
+
     public void OnSceneLoaded(List<Upgrade> argument)
     {
         _upgrades = argument;
@@ -33,21 +43,6 @@ public class UpgradeStation : MonoBehaviour, ISceneLoadHandler<List<Upgrade>>
     {
         ActivateUpgradeStation?.Invoke();
         _coinText.text = _wallet.Coins.ToString();
-    }
-
-    public bool ContainsUpgrade()
-    {
-        return _upgrades != null && _upgrades.Count > 1;
-    }
-
-    private void Start()
-    {
-        if (_upgrades.Count >= 1)
-        {
-            MedKitIsBuyed = true;
-        }
-
-        InstantiateRandomUpgrades();
     }
 
     private void InstantiateRandomUpgrades()
@@ -90,6 +85,11 @@ public class UpgradeStation : MonoBehaviour, ISceneLoadHandler<List<Upgrade>>
             _errorScreen.SetActive(true);
             _audioResources.PlaySound(Error);
         }
+    }
+
+    public bool ContainsUpgrade()
+    {
+        return _upgrades != null && _upgrades.Count > 1;
     }
 
     private bool TrySellUpgrade(Upgrade upgrade, UpgradeView view)

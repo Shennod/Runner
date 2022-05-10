@@ -11,9 +11,10 @@ public class TrapAnimation : MonoBehaviour
     [SerializeField] private string _animationName;
     [SerializeField] private Sprite _firstSprite;
 
+    private Animator _animator;
+
     private SpriteRenderer _spriteRenderer;
     private BoxCollider2D _boxCollider;
-    private Animator _animator;
 
     public event UnityAction Activate;
 
@@ -34,15 +35,6 @@ public class TrapAnimation : MonoBehaviour
         _spriteRenderer.sprite = _firstSprite;
     }
 
-    IEnumerator PlayAnimation(float cooldown)
-    {
-        while (gameObject.activeSelf == true)
-        {
-            _animator.SetTrigger(_animationName);
-            yield return new WaitForSeconds(cooldown);
-        }
-    }
-
     public void ActivateCollider()
     {
         _boxCollider.enabled = true;
@@ -52,5 +44,14 @@ public class TrapAnimation : MonoBehaviour
     public void DeactivateCollider()
     {
         _boxCollider.enabled = false;
+    }
+
+    private IEnumerator PlayAnimation(float cooldown)
+    {
+        while (gameObject.activeSelf == true)
+        {
+            _animator.SetTrigger(_animationName);
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 }

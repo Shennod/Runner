@@ -14,14 +14,6 @@ public class UpgradeView : MonoBehaviour
 
     public event UnityAction<Upgrade, UpgradeView> SellButtonClick;
 
-    public void Render(Upgrade upgrade)
-    {
-        _upgrade = upgrade;
-        _label.text = upgrade.Label;
-        _price.text = upgrade.Price.ToString();
-        _icon.sprite = upgrade.Icon;
-    }
-
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
@@ -31,6 +23,15 @@ public class UpgradeView : MonoBehaviour
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
+
+    public void Render(Upgrade upgrade)
+    {
+        _upgrade = upgrade;
+        _label.text = upgrade.Label;
+        _price.text = upgrade.Price.ToString();
+        _icon.sprite = upgrade.Icon;
+    }
+
     private void OnButtonClick()
     {
         SellButtonClick?.Invoke(_upgrade, this);

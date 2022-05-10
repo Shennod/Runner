@@ -5,8 +5,9 @@ public class CameraShake : MonoBehaviour
 {
     [SerializeField] private Player _player;
 
-    private Animator _animator;
     private const string Shake = "Shake";
+
+    private Animator _animator;
 
     private void OnEnable()
     {
